@@ -31,7 +31,7 @@ public:                    // begin public section
 	void bark() const {
 		cout << "Woof!\n";
 	}
-	void show() const {
+	string show() const {
 		/** shows dog pic and display's dogName
 		Art modified from https://www.asciiart.eu/animals/dogs
 		original art by by Joan Stark */
@@ -42,11 +42,18 @@ public:                    // begin public section
 		cout << "(/ /^\\ \\)-'" << endl;
 		cout << " \"\"' '\"\" " << endl;
 		cout << "   " << dogName << "\n" << endl;
-		return; //optional return
+		return dogName; //optional return
 	}
+
+friend ostream& operator << (ostream& stream, const Dog& frac);
 private:                   // begin private section
 	string dogName;        // private member variable
 }; //don't forget semi-colon with C++ classes!!
+
+ostream& operator << (ostream& stream, const Dog& frac) {
+	stream << frac.show();
+	return stream;
+}
 
 
 int main() {
